@@ -8,8 +8,14 @@ LINE="-----------------------------------------------"
 source ./context.sh
 #  ---------------------------------------------------------
 #
-[[ ! -d ${appFolder}/letsencrypt ]] && mkdir -p ${appFolder}/letsencrypt
 sslDir="/etc/letsencrypt/live/"$mainDomain
+if [[ ! -d ${sslDir} ]]; then
+   echo 'Download first Letsencrypt certificates ...'
+   echo
+   read -rsn1 -p "Press any key to continue > "
+   exit
+   fi
+[[ ! -d ${appFolder}/letsencrypt ]] && mkdir -p ${appFolder}/letsencrypt
 echo $sslDir
 files=(cert.pem fullchain.pem privkey.pem)
 for file in ${files[*]} ; do
@@ -44,7 +50,7 @@ echo $LINE
 myText="server {\n\tlisten 80 default_server;\n\tlisten [::]:80 default_server;\n\t"
 myText+="server_name _;\n\treturn 301 https://\$host\$request_uri;\n\t}\n"
 if [[ ${mainDomain:1:-1} ]]; then
-    myText+="server {\n\tlisten 45.62.246.63:443 ssl;\n\tlisten [::]:443 ssl;\n\t"
+    myText+="server {\n\tlisten "$mainIP":443 ssl;\n\tlisten [::]:443 ssl;\n\t"
     myText+="server_name www."$mainDomain";\n\tinclude /etc/nginx/conf.d/ssl_mydomain.tld;\n\t"
     myText+="return 301 https://"$mainDomain"\$request_uri;\n\t}\n"
     fi
@@ -53,4 +59,7 @@ echo -e $myText
 echo -e $myText > ${appFolder}/default.conf
 echo $LINE$LINE
 echo 'Restart now the web server ...'
+echo
+read -rsn1 -p "Press any key to continue > "
 exit
+
