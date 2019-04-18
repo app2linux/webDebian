@@ -30,8 +30,8 @@ echo -e "\tCopy & overwriting all bash script files except <context.sh>"
 echo -e "\tTo modify <context.sh> erase file first\n"$LINE
 isOk; val=$?;
 [[ $val == 0 ]] && return
-file=(start.sh setupServer.sh startup.sh nginxConfig.sh setupDav.sh letsencrypt.sh nginxStart.sh sslConfig.sh configDav.sh test.sh)
-echo-n "Bash files: "
+file=(start.sh functions.sh setupServer.sh startup.sh nginxConfig.sh setupDav.sh letsencrypt.sh nginxStart.sh sslConfig.sh configDav.sh test.sh)
+echo -n "Bash files: "
 for ((i=0; i<${#file[@]}; i++)); do
     echo -n '<'${file[i]}'> : '
     wget -q https://raw.githubusercontent.com/app2linux/webDebian/master/${file[i]} -P ./
