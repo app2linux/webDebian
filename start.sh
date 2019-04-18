@@ -43,7 +43,7 @@ while true; do
     echo -e "  2. Update server & install uninstalled packages"
     echo -e "  r. Restart <context.sh> config file"
     echo -e "  5. Config WebDav backup service"
-    echo -e "  d. Download Letsencrypt SSL/TLS certificates"
+    echo -e "  L. Download Letsencrypt SSL/TLS certificates"
     echo -e "  9. Install & config SSL/TLS certificates"
     echo -e "  x. Exit\n"$LINE
     echo -en "\t"; read -rsn1 -p "Enter choice -> " key
@@ -52,13 +52,13 @@ while true; do
         2) ./setupServer.sh ;;
         r|R) restartContext ;;
         5) ./configDav.sh ;;
+        l|L) ./letsencrypt.sh ;;
         9) ./sslConfig.sh ;;
         x) break ;;
         esac
     done
 return
 }
-
 #  ----------------------------------
 function manageWebserver() {
 while true; do
