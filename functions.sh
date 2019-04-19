@@ -31,7 +31,7 @@ echo -e "\tTo modify <context.sh> erase file first\n"$LINE
 echo -en "\tDownload now "
 isOk; val=$?;
 [[ $val == 0 ]] && return
-file=(start.sh functions.sh setupServer.sh startup.sh nginxConfig.sh setupDav.sh letsencrypt.sh nginxStart.sh sslConfig.sh configDav.sh test.sh)
+file=(start.sh functions.sh setupServer.sh startup.sh nginxConfig.sh setupDav.sh letsencrypt.sh nginxStart.sh sslConfig.sh configDav.sh syncDav.sh test.sh)
 echo -en "\n\nBash files: "
 for ((i=0; i<${#file[@]}; i++)); do
     echo -n '<'${file[i]}'> : '
