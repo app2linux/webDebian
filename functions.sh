@@ -28,6 +28,7 @@ function downloadGit(){
 echo -e '\n'$LINE'\nDownload git files:'
 echo -e "\tCopy & overwriting all bash script files except <context.sh>"
 echo -e "\tTo modify <context.sh> erase file first\n"$LINE
+echo -en "\tDownload now "
 isOk; val=$?;
 [[ $val == 0 ]] && return
 file=(start.sh functions.sh setupServer.sh startup.sh nginxConfig.sh setupDav.sh letsencrypt.sh nginxStart.sh sslConfig.sh configDav.sh test.sh)
