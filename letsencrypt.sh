@@ -33,13 +33,14 @@ domains=''
 for ((i=1; i<${#context[@]}; i++)); do
     data=(${context[i]:1:-1})
     [[ -z $data || $data == "''" ]] && break
-    domains+=${data[0]}" "
+    domains+=${data[0]}","
     done
 echo -en "Domains:\n\t{"$domains"}"
 if [ -z $domains ]; then
     echo -e "\nNo domains to include into certificate\n"$LINE 
     echo -en "\t"; read -rsn1 -p "Press a key to continue  >  " key; exit;
 fi
+domains+='www.'$mainDomain
 #
 clear
 echo -e "\n"$LINE$LINE"\nDefine LetsEncrypt options:\n"$LINE 
