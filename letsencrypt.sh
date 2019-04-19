@@ -79,6 +79,7 @@ if [[ -d /etc/letsencrypt/live ]]; then
     read -rsn1 -p "Press any key to continue > "; exit 0;
 fi
 file='/etc/letsencrypt/cli.ini'
+mkdir /etc/letsencrypt
 echo -e "\n\n"$file 'content\n'$LINE
 content="rsa-key-size = 4096"
 [[ ${email} ]] && content+="\nemail = "$email || content+="\n#email = "
