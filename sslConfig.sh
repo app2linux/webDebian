@@ -38,7 +38,7 @@ for ((i=1; i<${#context[@]}; i++)); do
     echo '> '${file}
     if [[ ! -f ${appFolder}/${data[3]}.old ]]; then
         cp ${file} ${appFolder}/${data[3]}.old
-        sed -ie "s/80.*$/443 ssl;/g" ${file}
+        sed  -Ei "s/80.*$/443 ssl;/g" ${file}
         sed -i '/server_name/a include /etc/nginx/conf.d/ssl_mydomain.tld;' $file
         cat $file 
         echo $LINE
