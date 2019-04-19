@@ -1,4 +1,4 @@
-!/bin/bash
+#!/bin/bash
 # This script has been tested on Debian 8 Jessie image
 # chmod +x ./sslConfig.sh
 #  ---------------------------------------------------------
