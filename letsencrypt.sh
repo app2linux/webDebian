@@ -109,7 +109,7 @@ fi
 [[ ${lineOrder} = *"ssloff"* ]] && echo 'ssl not configured on domains' || ./sslConfig.sh
 if [[ $autoRenew == 1 ]]; then
     crontab -l > mycron
-    [[ ! $(sed -e '/certbot-auto/ !d' mycron) ]] && echo "45 2 * * 6 /root/.startup/certbot-auto renew && cp /etc/letsencrypt/live/$mainDomain/*.* /app/nginx/letsencrypt && docker restart $dockerNginxContainer" >> mycron
+    [[ ! $(sed -e '/certbot-auto/ !d' mycron) ]] && echo "45 2 * * 6 /root/.startup/certbot-auto renew && cp -rf /etc/letsencrypt/live/$mainDomain/*.* /app/nginx/letsencrypt && docker restart $dockerNginxContainer" >> mycron
     crontab mycron
     rm mycron
     echo 'Added weekly task to cron'
