@@ -1,6 +1,6 @@
 #!/bin/bash
 # This script has been tested on Debian 8 Jessie image
-# chmod +x ./function.sh
+# chmod +x ./functions.sh
 source ./context.sh
 #  ---------------------------------------------------------
 function isCorrect(){
